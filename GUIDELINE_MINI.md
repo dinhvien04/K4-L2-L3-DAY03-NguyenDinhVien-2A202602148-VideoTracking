@@ -7,7 +7,7 @@
 > người trong nhóm gán khác nhau, gần như luôn là vì file này chưa nói rõ — chứ
 > không phải vì ai kém.
 
-Nhóm / tên: `Nhóm Học viên (Day 3 - Video Tracking)`
+Nhóm / tên: `Nguyễn Đình Viên (MSSV: 2A202602148)`
 Clip: `clip_01`, `clip_02`
 
 ---

@@ -1,6 +1,6 @@
 # Báo cáo Ngày 3 — Tracking Annotation
 
-Họ tên / nhóm: Nhóm Học viên (Day 3 - Video Tracking)
+Họ tên / nhóm: Nguyễn Đình Viên (MSSV: 2A202602148)
 Ngày: 15/09/2026
 
 ---

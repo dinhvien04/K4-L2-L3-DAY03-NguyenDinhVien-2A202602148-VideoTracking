@@ -1,6 +1,6 @@
 # Báo cáo kiểm chéo — Peer Review Tracking (Ngày 3)
 
-- **Người thực hiện gán nhãn chính**: Nhóm Học viên (Bản A)
+- **Người thực hiện gán nhãn chính**: Nguyễn Đình Viên (MSSV: 2A202602148 - Bản A)
 - **Người thực hiện kiểm chéo (Reviewer)**: Bạn Nguyễn Văn A (Bản B)
 - **Clip đánh giá**: `clip_01` (190 frame) & `clip_02` (60 frame)
 - **Ngày thực hiện**: 15/09/2026
