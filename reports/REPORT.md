@@ -70,13 +70,13 @@ Sau khi đọc danh sách lỗi, bạn đã sửa cụ thể những gì? Ghi th
 
 ## 4. Kết quả model và so sánh ba chiều
 
-Cấu hình: model `yolo11n.pt` / `yolov8n.pt`, tracker `bytetrack.yaml`, conf `0.25`, imgsz `960`
+Cấu hình: model `yolo26n.pt`, tracker `bytetrack.yaml`, conf `0.25`, imgsz `960`
 
 | So sánh | HOTA | DetA | AssA | LocA | IDF1 | MOTA | MOTP | FP | FN | IDSW |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | bạn vs gold | 0.780 | 0.770 | 0.793 | 0.846 | 0.970 | 0.939 | 0.826 | 31 | 4 | 0 |
-| model vs gold | 0.612 | 0.584 | 0.651 | 0.798 | 0.665 | 0.628 | 0.789 | 58 | 142 | 4 |
-| model vs bạn | 0.628 | 0.601 | 0.668 | 0.805 | 0.680 | 0.645 | 0.795 | 54 | 150 | 5 |
+| model vs gold | 0.709 | 0.649 | 0.776 | 0.846 | 0.875 | 0.749 | 0.823 | 88 | 54 | 2 |
+| model vs bạn | 0.645 | 0.591 | 0.708 | 0.811 | 0.850 | 0.707 | 0.778 | 90 | 83 | 3 |
 
 *(Ghi chú: Kết quả so sánh model phản ánh đặc trưng zero-shot của YOLO+ByteTrack khi chưa fine-tune trên dữ liệu góc quay CCTV chuyên biệt).*
 
@@ -92,9 +92,9 @@ Cấu hình: model `yolo11n.pt` / `yolov8n.pt`, tracker `bytetrack.yaml`, conf `
 
 **2. DetA và AssA của model lệch nhau bao nhiêu? Cái nào kéo HOTA xuống — model không tìm ra xe, hay tìm ra rồi nhưng đánh mất ID?**
 
-- Với kết quả model, **DetA (0.584) thấp hơn đáng kể so với AssA (0.651)**.
-- **DetA chính là yếu tố kéo HOTA xuống**. Model YOLO chạy zero-shot từ tập pre-trained COCO gặp khó khăn trong việc phát hiện các xe ở xa có kích thước pixel nhỏ hoặc các xe có góc chụp từ trên cao (CCTV view) khác với góc chụp ngang phổ biến của COCO. Nhiều frame model không tự tin để vượt qua ngưỡng confidence (gây FN cao).
-- Ngược lại, AssA của ByteTrack tương đối khá vì thuật toán Kalman Filter kết hợp IoU 2 vòng (giữ lại cả các detection điểm thấp ở vòng 2) giúp duy trì ID tương đối tốt cho những xe kích thước trung bình và lớn.
+- Với kết quả model vs gold, **DetA (0.649) thấp hơn đáng kể so với AssA (0.776)**, độ lệch là **0.127**.
+- **DetA chính là yếu tố kéo HOTA xuống**. Model YOLO chạy zero-shot từ tập pre-trained COCO gặp khó khăn trong việc phát hiện các xe ở xa có kích thước pixel nhỏ hoặc các xe có góc chụp từ trên cao (CCTV view) khác với góc chụp ngang phổ biến của COCO (gây 54 FN và 88 FP).
+- Ngược lại, AssA của ByteTrack đạt mức rất tốt (0.776, chỉ có 2 lần ID switch) vì thuật toán Kalman Filter kết hợp IoU 2 vòng (giữ lại cả các detection điểm thấp ở vòng 2) giúp duy trì ID bền bỉ một khi xe đã được phát hiện.
 
 **3. Một chỗ bạn đúng và model sai (frame, ID, vì sao):**
 
